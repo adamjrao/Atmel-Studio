@@ -7,10 +7,10 @@
 
 
 /* Port controls  (Platform dependent) */
-#define SS      (1<<PB4)
-#define MOSI   (1<<PB5)
-#define MISO   (1<<PB6)
-#define SCK      (1<<PB7)
+#define SS      (1<<PB2)		//Define microcontroller specific SPI ports
+#define MOSI   (1<<PB3)
+#define MISO   (1<<PB4)
+#define SCK      (1<<PB5)
 
 #define CS_LOW()	PORTB &= ~SS			/* CS=low */
 #define	CS_HIGH()	PORTB |= SS			/* CS=high */

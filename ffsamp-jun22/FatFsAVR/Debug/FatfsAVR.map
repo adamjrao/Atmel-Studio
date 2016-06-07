@@ -3,7 +3,7 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
                               ff.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
-                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
                               ff.o (__tablejump2__)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
@@ -25,8 +25,8 @@ sec                 0x200             FatfsAVR.o
 
 Discarded input sections
 
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
+ .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
  .text          0x00000000        0x0 ff.o
  .data          0x00000000        0x0 ff.o
  .bss           0x00000000        0x0 ff.o
@@ -57,8 +57,6 @@ Discarded input sections
  .text          0x00000000        0x0 uart.o
  .data          0x00000000        0x0 uart.o
  .bss           0x00000000        0x0 uart.o
- .text.uart_init
-                0x00000000       0x3c uart.o
  .text.uart_test
                 0x00000000        0xa uart.o
  .text.uart_getc
@@ -194,7 +192,8 @@ user_signatures  0x00850000         0x00000400         rw !x
 
 Linker script and memory map
 
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
+Address of section .data set to 0x800100
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
 LOAD ff.o
 LOAD mmc.o
 LOAD uart.o
@@ -207,7 +206,7 @@ START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libc.a
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5\libatmega32.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5\libatmega328.a
 END GROUP
                 0x00020000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
                 0x0000ffa0                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
@@ -307,51 +306,51 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2acc
+.text           0x00000000     0x2b9e
  *(.vectors)
- .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
+ .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
  .progmem.gcc_sw_table.disk_ioctl
-                0x00000054       0x1e mmc.o
-                0x00000072                . = ALIGN (0x2)
-                0x00000072                __trampolines_start = .
+                0x00000068       0x1e mmc.o
+                0x00000086                . = ALIGN (0x2)
+                0x00000086                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000072        0x0 linker stubs
+ .trampolines   0x00000086        0x0 linker stubs
  *(.trampolines*)
-                0x00000072                __trampolines_end = .
+                0x00000086                __trampolines_end = .
  *(.progmem*)
-                0x00000072                . = ALIGN (0x2)
+                0x00000086                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000072                __ctors_start = .
+                0x00000086                __ctors_start = .
  *(.ctors)
-                0x00000072                __ctors_end = .
-                0x00000072                __dtors_start = .
+                0x00000086                __ctors_end = .
+                0x00000086                __dtors_start = .
  *(.dtors)
-                0x00000072                __dtors_end = .
+                0x00000086                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000072        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
-                0x00000072                __init
+ .init0         0x00000086        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
+                0x00000086                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000072        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
+ .init2         0x00000086        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000007e       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
-                0x0000007e                __do_copy_data
- .init4         0x00000094       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
-                0x00000094                __do_clear_bss
+ .init4         0x00000092       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000092                __do_copy_data
+ .init4         0x000000a8       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x000000a8                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -362,136 +361,150 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000a4        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
+ .init9         0x000000b8        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
  *(.init9)
  *(.text)
- .text          0x000000ac        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
-                0x000000ac                __vector_1
-                0x000000ac                __vector_12
-                0x000000ac                __bad_interrupt
-                0x000000ac                __vector_6
-                0x000000ac                __vector_3
-                0x000000ac                __vector_11
-                0x000000ac                __vector_17
-                0x000000ac                __vector_19
-                0x000000ac                __vector_7
-                0x000000ac                __vector_5
-                0x000000ac                __vector_4
-                0x000000ac                __vector_9
-                0x000000ac                __vector_2
-                0x000000ac                __vector_15
-                0x000000ac                __vector_8
-                0x000000ac                __vector_16
-                0x000000ac                __vector_18
-                0x000000ac                __vector_20
-                0x000000b0                . = ALIGN (0x2)
+ .text          0x000000c0        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
+                0x000000c0                __vector_22
+                0x000000c0                __vector_1
+                0x000000c0                __vector_24
+                0x000000c0                __vector_12
+                0x000000c0                __bad_interrupt
+                0x000000c0                __vector_6
+                0x000000c0                __vector_3
+                0x000000c0                __vector_23
+                0x000000c0                __vector_25
+                0x000000c0                __vector_11
+                0x000000c0                __vector_13
+                0x000000c0                __vector_17
+                0x000000c0                __vector_7
+                0x000000c0                __vector_5
+                0x000000c0                __vector_4
+                0x000000c0                __vector_9
+                0x000000c0                __vector_2
+                0x000000c0                __vector_21
+                0x000000c0                __vector_15
+                0x000000c0                __vector_8
+                0x000000c0                __vector_10
+                0x000000c0                __vector_16
+                0x000000c0                __vector_20
+                0x000000c4                . = ALIGN (0x2)
  *(.text.*)
- .text.mem_cpy  0x000000b0       0x58 ff.o
+ .text.mem_cpy  0x000000c4       0x58 ff.o
  .text.ld_clust
-                0x00000108       0x32 ff.o
+                0x0000011c       0x32 ff.o
  .text.check_fs
-                0x0000013a       0x76 ff.o
+                0x0000014e       0x76 ff.o
  .text.sync_window
-                0x000001b0       0xd8 ff.o
+                0x000001c4       0xd8 ff.o
  .text.move_window
-                0x00000288       0x72 ff.o
+                0x0000029c       0x72 ff.o
  .text.validate
-                0x000002fa       0x4a ff.o
+                0x0000030e       0x4a ff.o
  .text.chk_mounted
-                0x00000344      0x5f4 ff.o
+                0x00000358      0x5f4 ff.o
  .text.clust2sect
-                0x00000938       0x5c ff.o
-                0x00000938                clust2sect
- .text.get_fat  0x00000994      0x1c6 ff.o
-                0x00000994                get_fat
- .text.dir_sdi  0x00000b5a      0x172 ff.o
- .text.put_fat  0x00000ccc      0x23c ff.o
-                0x00000ccc                put_fat
+                0x0000094c       0x5c ff.o
+                0x0000094c                clust2sect
+ .text.get_fat  0x000009a8      0x1c6 ff.o
+                0x000009a8                get_fat
+ .text.dir_sdi  0x00000b6e      0x172 ff.o
+ .text.put_fat  0x00000ce0      0x23c ff.o
+                0x00000ce0                put_fat
  .text.create_chain
-                0x00000f08      0x20c ff.o
+                0x00000f1c      0x20c ff.o
  .text.dir_next
-                0x00001114      0x270 ff.o
+                0x00001128      0x270 ff.o
  .text.follow_path
-                0x00001384      0x368 ff.o
- .text.f_mount  0x000016ec       0x2c ff.o
-                0x000016ec                f_mount
- .text.f_open   0x00001718      0x3cc ff.o
-                0x00001718                f_open
- .text.f_read   0x00001ae4      0x290 ff.o
-                0x00001ae4                f_read
- .text.f_sync   0x00001d74      0x142 ff.o
-                0x00001d74                f_sync
- .text.f_close  0x00001eb6       0x18 ff.o
-                0x00001eb6                f_close
- .text.f_gets   0x00001ece       0xa8 ff.o
-                0x00001ece                f_gets
+                0x00001398      0x368 ff.o
+ .text.f_mount  0x00001700       0x2c ff.o
+                0x00001700                f_mount
+ .text.f_open   0x0000172c      0x3cc ff.o
+                0x0000172c                f_open
+ .text.f_read   0x00001af8      0x290 ff.o
+                0x00001af8                f_read
+ .text.f_sync   0x00001d88      0x142 ff.o
+                0x00001d88                f_sync
+ .text.f_close  0x00001eca       0x18 ff.o
+                0x00001eca                f_close
+ .text.f_gets   0x00001ee2       0xa8 ff.o
+                0x00001ee2                f_gets
  .text.power_off
-                0x00001f76       0x10 mmc.o
+                0x00001f8a       0x10 mmc.o
  .text.xchg_spi
-                0x00001f86        0xa mmc.o
+                0x00001f9a        0xc mmc.o
  .text.deselect
-                0x00001f90        0xa mmc.o
- .text.select   0x00001f9a       0x30 mmc.o
+                0x00001fa6        0xa mmc.o
+ .text.select   0x00001fb0       0x30 mmc.o
  .text.rcvr_datablock
-                0x00001fca       0x70 mmc.o
+                0x00001fe0       0x74 mmc.o
  .text.send_cmd
-                0x0000203a       0xa0 mmc.o
+                0x00002054       0xa0 mmc.o
  .text.xmit_datablock
-                0x000020da       0x7e mmc.o
+                0x000020f4       0x82 mmc.o
  .text.disk_initialize
-                0x00002158      0x1a8 mmc.o
-                0x00002158                disk_initialize
+                0x00002176      0x1a8 mmc.o
+                0x00002176                disk_initialize
  .text.disk_status
-                0x00002300        0xe mmc.o
-                0x00002300                disk_status
+                0x0000231e        0xe mmc.o
+                0x0000231e                disk_status
  .text.disk_read
-                0x0000230e       0xa6 mmc.o
-                0x0000230e                disk_read
+                0x0000232c       0xa6 mmc.o
+                0x0000232c                disk_read
  .text.disk_write
-                0x000023b4       0xd8 mmc.o
-                0x000023b4                disk_write
+                0x000023d2       0xd8 mmc.o
+                0x000023d2                disk_write
  .text.disk_ioctl
-                0x0000248c      0x376 mmc.o
-                0x0000248c                disk_ioctl
+                0x000024aa      0x376 mmc.o
+                0x000024aa                disk_ioctl
  .text.disk_timerproc
-                0x00002802       0x3a mmc.o
-                0x00002802                disk_timerproc
+                0x00002820       0x3a mmc.o
+                0x00002820                disk_timerproc
+ .text.USART0Init
+                0x0000285a       0x40 uart.o
+                0x0000285a                USART0Init
  .text.uart_putc
-                0x0000283c       0x42 uart.o
-                0x0000283c                uart_putc
- .text.__vector_13
-                0x0000287e       0x64 uart.o
-                0x0000287e                __vector_13
+                0x0000289a       0x44 uart.o
+                0x0000289a                uart_putc
+ .text.__vector_18
+                0x000028de       0x66 uart.o
+                0x000028de                __vector_18
+ .text.__vector_19
+                0x00002944       0x78 uart.o
+                0x00002944                __vector_19
+ .text.USART0SendByte
+                0x000029bc       0x24 FatfsAVR.o
+                0x000029bc                USART0SendByte
+ .text.timer0_init
+                0x000029e0        0xa FatfsAVR.o
+                0x000029e0                timer0_init
  .text.__vector_14
-                0x000028e2       0x74 uart.o
-                0x000028e2                __vector_14
- .text.__vector_10
-                0x00002956       0x48 FatfsAVR.o
-                0x00002956                __vector_10
+                0x000029ea       0x48 FatfsAVR.o
+                0x000029ea                __vector_14
  .text.uart_puts
-                0x0000299e       0x1e FatfsAVR.o
-                0x0000299e                uart_puts
- .text.main     0x000029bc       0x7e FatfsAVR.o
-                0x000029bc                main
+                0x00002a32       0x1e FatfsAVR.o
+                0x00002a32                uart_puts
+ .text.main     0x00002a50       0xbc FatfsAVR.o
+                0x00002a50                main
  .text.get_fattime
-                0x00002a3a        0xa FatfsAVR.o
-                0x00002a3a                get_fattime
+                0x00002b0c        0xa FatfsAVR.o
+                0x00002b0c                get_fattime
  .text.libgcc.div
-                0x00002a44       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
-                0x00002a44                __udivmodsi4
- .text.libgcc   0x00002a88        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
-                0x00002a88                __tablejump2__
+                0x00002b16       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00002b16                __udivmodsi4
+ .text.libgcc   0x00002b5a        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00002b5a                __tablejump2__
  .text.libgcc.mul
-                0x00002a94       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_muluhisi3.o)
-                0x00002a94                __muluhisi3
+                0x00002b66       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_muluhisi3.o)
+                0x00002b66                __muluhisi3
  .text.libgcc.mul
-                0x00002aaa       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
-                0x00002aaa                __umulhisi3
-                0x00002ac8                . = ALIGN (0x2)
+                0x00002b7c       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00002b7c                __umulhisi3
+                0x00002b9a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002ac8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
-                0x00002ac8                _exit
-                0x00002ac8                exit
+ .fini9         0x00002b9a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00002b9a                _exit
+                0x00002b9a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -510,54 +523,57 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002ac8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x00002b9a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002acc                _etext = .
+                0x00002b9e                _etext = .
 
-.data           0x00800060       0x1a load address 0x00002acc
-                0x00800060                PROVIDE (__data_start, .)
+.data           0x00800100       0x28 load address 0x00002b9e
+                0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.Stat     0x00800060        0x1 mmc.o
+ .data.Stat     0x00800100        0x1 mmc.o
+ .data.usart0_str
+                0x00800101        0xe FatfsAVR.o
+                0x00800101                usart0_str
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800061        0xf ff.o
+                0x0080010f        0xf ff.o
  .rodata.str1.1
-                0x00800070        0x9 FatfsAVR.o
+                0x0080011e        0x9 FatfsAVR.o
  *(.gnu.linkonce.d*)
-                0x0080007a                . = ALIGN (0x2)
- *fill*         0x00800079        0x1 
-                0x0080007a                _edata = .
-                0x0080007a                PROVIDE (__data_end, .)
+                0x00800128                . = ALIGN (0x2)
+ *fill*         0x00800127        0x1 
+                0x00800128                _edata = .
+                0x00800128                PROVIDE (__data_end, .)
 
-.bss            0x0080007a      0x53a
-                0x0080007a                PROVIDE (__bss_start, .)
+.bss            0x00800128      0x53a
+                0x00800128                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.CurrVol   0x0080007a        0x1 ff.o
- .bss.Fsid      0x0080007b        0x2 ff.o
- .bss.FatFs     0x0080007d        0x2 ff.o
- .bss.CardType  0x0080007f        0x1 mmc.o
- .bss.Timer2    0x00800080        0x1 mmc.o
- .bss.Timer1    0x00800081        0x1 mmc.o
- .bss.RxFifo    0x00800082       0x46 uart.o
- .bss.TxFifo    0x008000c8       0x46 uart.o
+ .bss.CurrVol   0x00800128        0x1 ff.o
+ .bss.Fsid      0x00800129        0x2 ff.o
+ .bss.FatFs     0x0080012b        0x2 ff.o
+ .bss.CardType  0x0080012d        0x1 mmc.o
+ .bss.Timer2    0x0080012e        0x1 mmc.o
+ .bss.Timer1    0x0080012f        0x1 mmc.o
+ .bss.RxFifo    0x00800130       0x46 uart.o
+ .bss.TxFifo    0x00800176       0x46 uart.o
  *(COMMON)
- COMMON         0x0080010e      0x4a6 FatfsAVR.o
-                0x0080010e                fs
-                0x00800344                line
-                0x00800394                fin
-                0x008003b4                sec
-                0x008005b4                PROVIDE (__bss_end, .)
-                0x00002acc                __data_load_start = LOADADDR (.data)
-                0x00002ae6                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008001bc      0x4a6 FatfsAVR.o
+                0x008001bc                fs
+                0x008003f2                line
+                0x00800442                fin
+                0x00800462                sec
+                0x00800662                PROVIDE (__bss_end, .)
+                0x00002b9e                __data_load_start = LOADADDR (.data)
+                0x00002bc6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008005b4        0x0
+.noinit         0x00800662        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008005b4                _end = .
+                0x00800662                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -608,7 +624,7 @@ END GROUP
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
  .note.gnu.avr.deviceinfo
-                0x00000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega32/avr5/crtatmega32.o
+                0x00000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328/avr5/crtatmega328.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -625,7 +641,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x218
+.debug_aranges  0x00000000      0x228
  *(.debug_aranges)
  .debug_aranges
                 0x00000000      0x118 ff.o
@@ -634,56 +650,56 @@ END GROUP
  .debug_aranges
                 0x00000198       0x48 uart.o
  .debug_aranges
-                0x000001e0       0x38 FatfsAVR.o
+                0x000001e0       0x48 FatfsAVR.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x3c5c
+.debug_info     0x00000000     0x3e4f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x26fd ff.o
  .debug_info    0x000026fd      0xd3f mmc.o
- .debug_info    0x0000343c      0x231 uart.o
- .debug_info    0x0000366d      0x5ef FatfsAVR.o
+ .debug_info    0x0000343c      0x212 uart.o
+ .debug_info    0x0000364e      0x801 FatfsAVR.o
 
-.debug_abbrev   0x00000000      0x88b
+.debug_abbrev   0x00000000      0x930
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x2ff ff.o
  .debug_abbrev  0x000002ff      0x298 mmc.o
- .debug_abbrev  0x00000597      0x123 uart.o
- .debug_abbrev  0x000006ba      0x1d1 FatfsAVR.o
+ .debug_abbrev  0x00000597      0x13b uart.o
+ .debug_abbrev  0x000006d2      0x25e FatfsAVR.o
 
-.debug_line     0x00000000     0x2782
+.debug_line     0x00000000     0x2812
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000     0x1c5c ff.o
  .debug_line    0x00001c5c      0x77d mmc.o
- .debug_line    0x000023d9      0x201 uart.o
- .debug_line    0x000025da      0x1a8 FatfsAVR.o
+ .debug_line    0x000023d9      0x207 uart.o
+ .debug_line    0x000025e0      0x232 FatfsAVR.o
 
-.debug_frame    0x00000000      0xb28
+.debug_frame    0x00000000      0xb50
  *(.debug_frame)
  .debug_frame   0x00000000      0x7fc ff.o
  .debug_frame   0x000007fc      0x1ac mmc.o
  .debug_frame   0x000009a8       0xd8 uart.o
- .debug_frame   0x00000a80       0xa8 FatfsAVR.o
+ .debug_frame   0x00000a80       0xd0 FatfsAVR.o
 
-.debug_str      0x00000000      0x799
+.debug_str      0x00000000      0x7de
  *(.debug_str)
  .debug_str     0x00000000      0x5f8 ff.o
                                 0x671 (size before relaxing)
  .debug_str     0x000005f8      0x109 mmc.o
                                 0x30b (size before relaxing)
- .debug_str     0x00000701       0x6d uart.o
-                                0x1dd (size before relaxing)
- .debug_str     0x0000076e       0x2b FatfsAVR.o
-                                0x40f (size before relaxing)
+ .debug_str     0x00000701       0x65 uart.o
+                                0x1d5 (size before relaxing)
+ .debug_str     0x00000766       0x78 FatfsAVR.o
+                                0x471 (size before relaxing)
 
-.debug_loc      0x00000000     0x6674
+.debug_loc      0x00000000     0x66af
  *(.debug_loc)
  .debug_loc     0x00000000     0x55a4 ff.o
  .debug_loc     0x000055a4      0xd56 mmc.o
- .debug_loc     0x000062fa      0x22d uart.o
- .debug_loc     0x00006527      0x14d FatfsAVR.o
+ .debug_loc     0x000062fa      0x1eb uart.o
+ .debug_loc     0x000064e5      0x1ca FatfsAVR.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -703,12 +719,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x290
+.debug_ranges   0x00000000      0x2a0
  *(.debug_ranges)
  .debug_ranges  0x00000000      0x1c0 ff.o
  .debug_ranges  0x000001c0       0x70 mmc.o
  .debug_ranges  0x00000230       0x38 uart.o
- .debug_ranges  0x00000268       0x28 FatfsAVR.o
+ .debug_ranges  0x00000268       0x38 FatfsAVR.o
 
 .debug_macro
  *(.debug_macro)

@@ -7,30 +7,34 @@
 #include <avr/interrupt.h>
 #include "uart.h"
 
-#define	UART_BPS		115200
+#define	UART_BPS		57600
 #define	UART_BUFF		64
 
 
 typedef struct {
 	uint16_t	wi, ri, ct;
 	uint8_t buff[UART_BUFF];
-} FIFO;
+}FIFO;
 static
 volatile FIFO TxFifo, RxFifo;
 
 
 
 /* Initialize UART */
-
-void uart_init (uint32_t bps)
+void USART0Init(void)
 {
-	UCSRB = 0;
+	// Set baud rate
+	UBRR0H = (uint8_t)(UBRR_VALUE>>8);
+	UBRR0L = (uint8_t)UBRR_VALUE;
+	// Set frame format to 8 data bits, no parity, 1 stop bit
+	UCSR0C |= (1<<UCSZ01)|(1<<UCSZ00);
 
+	// Reset FIFO
 	RxFifo.ct = 0; RxFifo.ri = 0; RxFifo.wi = 0;
 	TxFifo.ct = 0; TxFifo.ri = 0; TxFifo.wi = 0;
 
-	UBRRL = F_CPU / bps / 16 - 1;
-	UCSRB = _BV(RXEN) | _BV(RXCIE) | _BV(TXEN);
+	//enable transmission and reception
+	UCSR0B |= (1<<RXEN0)|(1<<TXEN0)|(1<<RXCIE0);
 }
 
 
@@ -59,7 +63,6 @@ uint8_t uart_getc (void)
 	return d;
 }
 
-
 /* Put a character to transmit */
 
 void uart_putc (uint8_t d)
@@ -73,7 +76,7 @@ void uart_putc (uint8_t d)
 	TxFifo.buff[i] = d;
 	cli();
 	TxFifo.ct++;
-	UCSRB = _BV(RXEN) | _BV(RXCIE) | _BV(TXEN) | _BV(UDRIE);
+	UCSR0B = (1<<RXEN0) | (1<<TXEN0) | (1<< UDRE0) | (1<<RXCIE0);
 	sei();
 	TxFifo.wi = (i + 1) % sizeof TxFifo.buff;
 }
@@ -81,12 +84,12 @@ void uart_putc (uint8_t d)
 
 /* UART RXC interrupt */
 
-ISR(USART_RXC_vect)
+ISR(USART_RX_vect)
 {
 	uint8_t d, n, i;
 
 
-	d = UDR;
+	d = UDR0;
 	n = RxFifo.ct;
 	if (n < sizeof RxFifo.buff) {
 		RxFifo.ct = ++n;
@@ -103,14 +106,13 @@ ISR(USART_UDRE_vect)
 {
 	uint8_t n, i;
 
-
 	n = TxFifo.ct;
 	if (n) {
 		TxFifo.ct = --n;
 		i = TxFifo.ri;
-		UDR = TxFifo.buff[i];
+		UDR0 = TxFifo.buff[i];
 		TxFifo.ri = (i + 1) % sizeof TxFifo.buff;
 	}
-	if (n == 0) UCSRB = _BV(RXEN) | _BV(RXCIE) | _BV(TXEN);
+	if (n == 0) UCSR0B = (1<<RXEN0) | (1<<RXCIE0) | (1<<TXEN0);
 }
 
