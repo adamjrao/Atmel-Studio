@@ -12,8 +12,8 @@
 #include "../avr/uart.h"		//Uart initialization etc.
 #include <util/delay.h>			//Allow us and ms delays
 //#define F_CPU 16000000		//Note F_CPU is defined in symbols section of Atmel GUI
-#define adcbuffersize 512		//Good size for SD storage
-uint16_t adcbuffer[adcbuffersize]; // Create buffer to store data during interrupt
+#define ADCBUFFERSIZE 512		//Good size for SD storage
+uint16_t adcbuffer[ADCBUFFERSIZE]; // Create buffer to store data during interrupt
 uint16_t adcbufferindex; // Create index for the buffer
 uint32_t timetotal; // Create a variable to hold the value of the TIMER0 register
 uint8_t timediff; // variable to hold the difference in time since last ADC call
@@ -75,7 +75,7 @@ ISR(ADC_vect)
 	adcbuffer[adcbufferindex] = ADC;
 	adcbufferindex++;
 	
-	if (adcbufferindex==adcbuffersize)
+	if (adcbufferindex==ADCBUFFERSIZE)
 	{
 		adcbufferindex=0;
 	}
@@ -174,7 +174,7 @@ int main(void)
 			f_printf(&fin,"%u\n", (uint16_t)sensorval);
 			//Increment local buffer index
 			localbufferindex++;
-			if (localbufferindex==adcbuffersize)
+			if (localbufferindex==ADCBUFFERSIZE)
 			{
 				localbufferindex=0;
 			}
