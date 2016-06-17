@@ -104,31 +104,37 @@ void timer2_init()
 	// initialize counter
 	TCNT2 = 0;
 }
+ISR(TIMER2_COMPA_vect) {
+	disk_timerproc(); //FatFs uses it internally to countdown some soft timers to implement time outs (needed during file functions), also CardPresent and WriteProtect
+}
 
 
 int main(void)
 {
 	
 	uint16_t sensorval = 0;
-		//Set buffer index to zero before enabling interrupts
-		adcbufferindex = 0;
-		timetotal = 0;
-		timediff = 0;
-		lasttime = 0;
-		currenttime = 0;
+	//Set buffer index to zero before enabling interrupts
+	adcbufferindex = 0;
+	timetotal = 0;
+	timediff = 0;
+	lasttime = 0;
+	currenttime = 0;
+	
 	FRESULT res;
 	OCR2A = 0x9B; // avrcalc says that at 16MHz that /1024 and CTC 0x9B aka 156 ticks will give 10ms
 	TIMSK2 = (1 << OCIE2A); // enable Timer0 Compare Match A interrupt, executed if a compare match occurs
 	TCCR2A = (1 << WGM21) | (1 << COM2A1); // CTC mode WGM01 set to 1, clear OC0A pin (not OCR0A! which is the number to compare to!) on compare match
-	sei(); //Enable global interrupt flag (tell CPU)
-		//initialize ADC
-		InitADC();
-		// initialize timer
-		timer0_init();
+	
+	//initialize ADC
+	InitADC();
+	// initialize timer
+	timer0_init();
 	// initialize timer
 	timer2_init();
 	//uart init
 	USART0Init();
+	
+	sei(); //Enable global interrupt flag (tell CPU)
 	
 	uint16_t localbufferindex=0;
 /* Working read file code
@@ -161,7 +167,8 @@ int main(void)
 		if (res == FR_OK) {
 			USART0SendByte('C',&usart0_str);
 		}
-			
+	}
+
 	while(1)
 	{
 		if(adcbufferindex==0)
@@ -183,9 +190,7 @@ int main(void)
 	}
 }
 
-ISR(TIMER2_COMPA_vect) {
-	disk_timerproc(); //FatFs uses it internally to countdown some soft timers to implement time outs (needed during file functions), also CardPresent and WriteProtect
-}
+
 
 void uart_puts(char * str) {
 	while (*str) {
